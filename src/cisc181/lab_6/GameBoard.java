@@ -168,4 +168,16 @@ public class GameBoard {
         }
         return maxV;
     }
+    @Override
+    public String toString() {
+        StringBuilder buffer = new StringBuilder();
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board.length; j++) {
+                buffer.append(board[i][j] + " ");
+            }
+            buffer.append("\n");
+        }
+        return buffer.toString();
+    }
+
 }

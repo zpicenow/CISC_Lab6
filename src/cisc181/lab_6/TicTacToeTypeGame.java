@@ -3,7 +3,7 @@ package cisc181.lab_6;
 /**
  * TicTacToeTypeGame for game
  */
-public class TicTacToeTypeGame {
+public class TicTacToeTypeGame extends Game{
     private GameBoard gameBoard;
     private char turnSymbol;
     private char notTurnSymbol;
@@ -155,5 +155,23 @@ public class TicTacToeTypeGame {
         } else {
             return "It’s Player " + turnSymbol + "’s turn.";
         }
+    }
+
+    /**
+     * override the toString() method that returns a string containing the board and the status of the game
+     * @return a string containing the board and the status of the game
+     */
+    @Override
+    public String toString() {
+        StringBuilder buffer = new StringBuilder();
+        for (int i = 0; i < gameBoard.getBoard().length; i++) {
+            for (int j = 0; j < gameBoard.getBoard().length; j++) {
+                buffer.append(gameBoard.getBoard()[i][j] + " ");
+            }
+            buffer.append("\n");
+        }
+        buffer.append(getStatus());
+        return buffer.toString();
+
     }
 }
