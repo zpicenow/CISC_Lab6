@@ -45,6 +45,8 @@ public class TicTacToeTypeGame extends Game{
         return turnSymbol;
     }
 
+
+
     /**
      * getter for not turn
      * @return not turn
@@ -155,6 +157,38 @@ public class TicTacToeTypeGame extends Game{
         } else {
             return "It’s Player " + turnSymbol + "’s turn.";
         }
+    }
+
+
+    @Override
+    public void performAction(Action action) {
+        onPerformAction(action);
+        if (isWin) {
+            onEnd();
+        }
+    }
+
+    @Override
+    protected void onPerformAction(Action action) {
+        getTurnSymbol();
+        gameBoard.printBoard();
+        getStatus();
+        changeTurn();
+
+    }
+
+    @Override
+    protected void onStart() {
+        gameBoard = new GameBoard(setUpEmptyArray(numRows, numCols));
+        gameBoard.printBoard();
+        System.out.println("----Welcome to Tic-Tac-Toe----");
+    }
+
+    @Override
+    protected void onEnd() {
+        System.out.println("----Game Over----");
+        gameBoard.printBoard();
+        getStatus();
     }
 
     /**
